@@ -6,6 +6,7 @@ html {
 
 body {
     margin: 0;
+    background: whitesmoke;
 }
 
 .wrapper {
@@ -41,6 +42,7 @@ h3 {
 
 #container {
     border: 1px solid #f1f1f1;
+    background: white;
     width: 768px;
     height: 768px;
     margin: 40px 0;
