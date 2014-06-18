@@ -1,6 +1,7 @@
 var $container = $('#container');
 var color = '#ff0900';
 var grid = 24;
+var clickdown = false;
 
 //Create the pixel grid
 var createGrid = function(n) {
@@ -21,22 +22,17 @@ var newGrid = function() {
 };
 
 //Draw
-var clickdown = false;
-
 $('#container').mousedown(function() {
 	clickdown = true;
-	console.log(clickdown);
 });
 $('#container').mouseup(function() {
 	clickdown = false;
-	console.log(clickdown);
 });
 
 $('#container').delegate('div','mousemove', function(){
 	var that = $(this);
 
 	if(clickdown === true) {
-		console.log("inside");
 		that.css('background',color);
 	}
 	
@@ -81,7 +77,6 @@ $('.minicolorpicker').minicolors({
 	control: 'brightness',
 	changeDelay: 50,
 	change: function(hex) {
-		console.log(hex)
 		color = hex;
 	}
 });
