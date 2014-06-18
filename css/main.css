@@ -29,7 +29,7 @@ body {
 .right {
     display: inline-block;
     text-align: right;
-    width: 682px;
+    width: 555px;
     line-height: 60px;
 }
 .right a {}
@@ -102,65 +102,4 @@ body {
 
 .clearfix:after {
     clear: both;
-}
-
-
-/*
- * Very simple jQuery Color Picker
- * https://github.com/tkrotoff/jquery-simplecolorpicker
- *
- * Copyright (C) 2012-2013 Tanguy Krotoff <tkrotoff@gmail.com>
- *
- * Licensed under the MIT license
- */
-
-.simplecolorpicker.inline {
-  display: inline-block;
-  padding: 6px 0;
-}
-
-.simplecolorpicker span {
-  margin: 0;
-  display:block;
-}
-
-.simplecolorpicker.icon,
-.simplecolorpicker span.color {
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-
-.simplecolorpicker.icon:after,
-.simplecolorpicker span.color:after {
-  content: '\00a0\00a0\00a0\00a0\00a0'; /* Spaces */
-}
-
-.simplecolorpicker span.color[data-disabled]:hover {
-  cursor: not-allowed;
-  border: 1px solid transparent;
-}
-
-.simplecolorpicker span.color:hover,
-.simplecolorpicker span.color[data-selected],
-.simplecolorpicker span.color[data-selected]:hover {
-  border: 1px solid #222; /* @gray-dark */
-}
-.simplecolorpicker span.color[data-selected]:after {
-  color: #fff;
-}
-
-/* Vertical separator, replaces optgroup. */
-.simplecolorpicker span.vr {
-  border-left: 1px solid #222; /* @gray-dark */
-}
-
-.simplecolorpicker.regularfont span.color[data-selected]:after {
-  content: '\2714'; /* Ok/check mark */
-
-  margin-right: 2px;
-  margin-left: 2px;
-}
-
-.simplecolorpicker span[data-color="#ffffff"]{
-    border: 1px solid #ddd;
 }

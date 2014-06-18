@@ -1,5 +1,5 @@
 var $container = $('#container');
-var color = 'black';
+var color = '#ff0900';
 var grid = 24;
 
 //Create the pixel grid
@@ -10,6 +10,7 @@ var createGrid = function(n) {
   	var $newdiv = $('<div></div>');
 		$container.append($newdiv);
 	}
+
 	$('#container div').height(grid - 2).width(grid - 2);
 };
 
@@ -24,17 +25,36 @@ $(document).ready(function() {
 	createGrid(grid);
 
 	//Colorpicker
-	$('select[name="colorpicker"]').simplecolorpicker({
-	  picker: false,
-	  theme: 'regularfont'
-	}).on('change', function() {
-	  color = $('select[name="colorpicker"]').val();
+	$('.minicolorpicker').minicolors({
+		inline: true,
+		control: 'brightness',
+		changeDelay: 50,
+		change: function(hex) {
+			console.log(hex)
+			color = hex;
+		}
 	});
 	
 	//Draw
-	$('#container').delegate('div','click', function(){
+	var clickdown = false;
+	
+	$('#container').mousedown(function() {
+		clickdown = true;
+		console.log(clickdown);
+	});
+	$('#container').mouseup(function() {
+		clickdown = false;
+		console.log(clickdown);
+	});
+	
+	$('#container').delegate('div','mousemove', function(){
 		var that = $(this);
-		that.css('background',color);
+
+		if(clickdown === true) {
+			console.log("inside");
+			that.css('background',color);
+		}
+		
 	});
 
 	//Clear
@@ -47,6 +67,7 @@ $(document).ready(function() {
 		newGrid();
 	});
 
+	//Pixel size
 	$('#largeGrid').on('click',function() {
 		grid = 32;
 		newGrid();
