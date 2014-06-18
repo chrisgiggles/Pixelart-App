@@ -20,67 +20,68 @@ var newGrid = function() {
 	createGrid(grid);
 };
 
-$(document).ready(function() {
+//Draw
+var clickdown = false;
 
-	createGrid(grid);
+$('#container').mousedown(function() {
+	clickdown = true;
+	console.log(clickdown);
+});
+$('#container').mouseup(function() {
+	clickdown = false;
+	console.log(clickdown);
+});
 
-	//Colorpicker
-	$('.minicolorpicker').minicolors({
-		inline: true,
-		control: 'brightness',
-		changeDelay: 50,
-		change: function(hex) {
-			console.log(hex)
-			color = hex;
-		}
-	});
+$('#container').delegate('div','mousemove', function(){
+	var that = $(this);
+
+	if(clickdown === true) {
+		console.log("inside");
+		that.css('background',color);
+	}
 	
-	//Draw
-	var clickdown = false;
-	
-	$('#container').mousedown(function() {
-		clickdown = true;
-		console.log(clickdown);
-	});
-	$('#container').mouseup(function() {
-		clickdown = false;
-		console.log(clickdown);
-	});
-	
-	$('#container').delegate('div','mousemove', function(){
-		var that = $(this);
+});
 
-		if(clickdown === true) {
-			console.log("inside");
-			that.css('background',color);
-		}
-		
-	});
+//Clear
+var clearAll = function() {
+	$container.children().removeClass('pixel');
+};
 
-	//Clear
-	var clearAll = function() {
-		$container.children().removeClass('pixel');
-	};
+$('#clear').on('click',function() {
+	clearAll();
+	newGrid();
+});
 
-	$('#clear').on('click',function() {
-		clearAll();
-		newGrid();
-	});
+//Pixel size
+$('#largeGrid').on('click',function() {
+	grid = 32;
+	newGrid();
+});
 
-	//Pixel size
-	$('#largeGrid').on('click',function() {
-		grid = 32;
-		newGrid();
-	});
+$('#mediumGrid').on('click',function() {
+	grid = 24;
+	newGrid();
+});
 
-	$('#mediumGrid').on('click',function() {
-		grid = 24;
-		newGrid();
-	});
+$('#smallGrid').on('click',function() {
+	grid = 16;
+	newGrid();
+});
 
-	$('#smallGrid').on('click',function() {
-		grid = 16;
-		newGrid();
-	});
+//Disable Dragging
+$(document).bind("dragstart", function(event) {
+  event.preventDefault();
+});
 
+createGrid(grid);
+
+//Colorpicker
+$('.minicolorpicker').minicolors({
+	inline: true,
+	control: 'brightness',
+	changeDelay: 50,
+	change: function(hex) {
+		console.log(hex)
+		color = hex;
+	}
 });
