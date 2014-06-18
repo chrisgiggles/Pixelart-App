@@ -17,7 +17,7 @@ body {
     height: 60px;
     line-height: 40px;
     width: 100%;
-    background: #46d6db;
+    background: #f2f2f2;
 }
 
 #toolbar h1 {
@@ -28,9 +28,11 @@ body {
 
 .right {
     display: inline-block;
-    float: right;
+    text-align: right;
+    width: 682px;
     line-height: 60px;
 }
+.right a {}
 
 #sidebar, #container {
     float: left;
@@ -65,7 +67,7 @@ body {
     text-transform: uppercase;
     color: white;
     background: tomato;
-    border-radius: 3px;
+    border-radius: 2px;
     text-decoration: none;
     box-shadow: 0 2px 0 #993B2B;
     transition: all 0.2s;
